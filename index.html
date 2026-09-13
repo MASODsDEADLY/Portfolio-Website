@@ -1,0 +1,857 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jordan Carter — Computer Science student portfolio">
+  <title>Jordan Carter | Computer Science</title>
+
+  <style>
+    :root {
+      --bg: #0a0e13;
+      --surface: #111720;
+      --surface-light: #18212c;
+      --text: #f1f5f9;
+      --muted: #9aa7b5;
+      --accent: #65b5ff;
+      --accent-2: #9b8cff;
+      --border: rgba(255,255,255,.09);
+      --max-width: 1100px;
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      color: var(--text);
+      background:
+        radial-gradient(
+          circle at 80% 0%,
+          rgba(101,181,255,.13),
+          transparent 30rem
+        ),
+        radial-gradient(
+          circle at 10% 25%,
+          rgba(155,140,255,.09),
+          transparent 28rem
+        ),
+        var(--bg);
+
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: auto;
+    }
+
+    /* ---------------- NAVIGATION ---------------- */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      backdrop-filter: blur(16px);
+      background: rgba(10,14,19,.78);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 68px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .nav-links a {
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* ---------------- HERO ---------------- */
+
+    .hero {
+      min-height: 85vh;
+
+      display: flex;
+      align-items: center;
+
+      padding: 100px 0;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+
+      font-size: .78rem;
+      font-weight: 800;
+
+      text-transform: uppercase;
+      letter-spacing: .16em;
+    }
+
+    h1 {
+      max-width: 900px;
+
+      margin: 15px 0 25px;
+
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: .96;
+
+      letter-spacing: -.065em;
+    }
+
+    .hero-description {
+      max-width: 700px;
+
+      color: var(--muted);
+
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 11px 18px;
+
+      border: 1px solid var(--border);
+      border-radius: 999px;
+
+      background: var(--surface);
+
+      font-weight: 700;
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(101,181,255,.6);
+    }
+
+    .button.primary {
+      color: #071019;
+      background: var(--text);
+      border-color: var(--text);
+    }
+
+    /* ---------------- SECTIONS ---------------- */
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+      margin: 6px 0;
+
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: -.05em;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* ---------------- CARDS ---------------- */
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      padding: 26px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(24,33,44,.95),
+          rgba(17,23,32,.95)
+        );
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+
+      font-size: 1.2rem;
+      letter-spacing: -.025em;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .card ul {
+      margin-top: 13px;
+      padding-left: 20px;
+    }
+
+    .meta {
+      margin-bottom: 10px;
+
+      color: var(--accent);
+
+      font-size: .82rem;
+      font-weight: 800;
+    }
+
+    /* ---------------- TAGS ---------------- */
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+
+      margin-top: 15px;
+    }
+
+    .tag {
+      padding: 5px 10px;
+
+      border: 1px solid var(--border);
+      border-radius: 999px;
+
+      color: var(--muted);
+
+      font-size: .8rem;
+    }
+
+    /* ---------------- EDUCATION ---------------- */
+
+    .education {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .graduation {
+      color: var(--accent);
+
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    /* ---------------- CONTACT ---------------- */
+
+    .contact {
+      text-align: center;
+      padding-bottom: 110px;
+    }
+
+    .contact-card {
+      max-width: 760px;
+      margin: auto;
+    }
+
+    .contact-card h2 {
+      margin: 8px 0;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: -.05em;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+    }
+
+    .contact .buttons {
+      justify-content: center;
+    }
+
+    /* ---------------- FOOTER ---------------- */
+
+    footer {
+      padding: 25px 0;
+
+      border-top: 1px solid var(--border);
+
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    /* ---------------- MOBILE ---------------- */
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(calc(100% - 28px), var(--max-width));
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 90px 0;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .two,
+      .three {
+        grid-template-columns: 1fr;
+      }
+
+      .education {
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <nav class="container">
+      <a href="#top" class="logo">
+        Jordan<span>.</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+
+        <div class="eyebrow">
+          Computer Science · Software Development
+        </div>
+
+        <h1>
+          Building software through code, curiosity, and experimentation.
+        </h1>
+
+        <p class="hero-description">
+          Computer Science student at Alvernia University with interests in
+          systems programming, game development, computer graphics, and web
+          development. I enjoy exploring how software works from the interface
+          down to the Windows API.
+        </p>
+
+        <div class="buttons">
+          <a href="#projects" class="button primary">
+            View Projects
+          </a>
+
+          <a href="#contact" class="button">
+            Get in Touch
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- EDUCATION -->
+    <section id="about">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">
+            01 · Education
+          </div>
+
+          <h2>
+            Computer Science Student
+          </h2>
+        </div>
+
+        <div class="card education">
+
+          <div>
+            <div class="meta">
+              Alvernia University · Reading, PA
+            </div>
+
+            <h3>
+              Bachelor of Science in Computer Science
+            </h3>
+
+            <p>
+              Relevant coursework: Object-Oriented Programming,
+              Data Structures &amp; Algorithms, Calculus, Database Systems,
+              and Computer Architecture.
+            </p>
+          </div>
+
+          <div class="graduation">
+            Class of 2029
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+    <section id="skills">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="eyebrow">
+            02 · Technical Skills
+          </div>
+
+          <h2>
+            Tools I work with
+          </h2>
+
+        </div>
+
+
+        <div class="grid three">
+
+          <div class="card">
+
+            <h3>
+              Languages
+            </h3>
+
+            <div class="tags">
+              <span class="tag">C++</span>
+              <span class="tag">Python</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">SQL</span>
+            </div>
+
+          </div>
+
+
+          <div class="card">
+
+            <h3>
+              Web
+            </h3>
+
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">UI Development</span>
+            </div>
+
+          </div>
+
+
+          <div class="card">
+
+            <h3>
+              Systems
+            </h3>
+
+            <div class="tags">
+              <span class="tag">C++ WinAPI</span>
+              <span class="tag">Windows Development</span>
+              <span class="tag">OOP</span>
+              <span class="tag">Databases</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="eyebrow">
+            03 · Selected Work
+          </div>
+
+          <h2>
+            Projects &amp; Experiments
+          </h2>
+
+          <p>
+            A selection of technical work spanning graphics, systems,
+            web development, and scripting.
+          </p>
+
+        </div>
+
+
+        <div class="grid two">
+
+          <article class="card">
+
+            <div class="meta">
+              C++ · OpenGL · Linear Algebra
+            </div>
+
+            <h3>
+              3D Game Engine Prototype
+            </h3>
+
+            <ul>
+              <li>
+                Developed a basic 3D rendering engine capable of displaying
+                textured objects and dynamic lighting.
+              </li>
+
+              <li>
+                Implemented matrix transformations for rotation,
+                translation, and camera movement.
+              </li>
+
+              <li>
+                Created collision detection and keyboard-controlled
+                player movement.
+              </li>
+
+              <li>
+                Used object-oriented design to organize rendering,
+                physics, and game entities.
+              </li>
+            </ul>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="meta">
+              C++ · Windows API
+            </div>
+
+            <h3>
+              Windows Desktop Utility Suite
+            </h3>
+
+            <ul>
+              <li>
+                Built Windows utilities using native WinAPI functionality.
+              </li>
+
+              <li>
+                Implemented custom windows, event handling, keyboard and
+                mouse interaction, and system-level functionality.
+              </li>
+
+              <li>
+                Designed reusable classes to separate application logic
+                from the user interface.
+              </li>
+
+              <li>
+                Debugged Windows-specific behavior using Visual Studio.
+              </li>
+            </ul>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="meta">
+              HTML · CSS · JavaScript
+            </div>
+
+            <h3>
+              Interactive Web Interface
+            </h3>
+
+            <ul>
+              <li>
+                Designed a responsive interactive website with custom
+                navigation and animated interface components.
+              </li>
+
+              <li>
+                Implemented JavaScript-based user interactions and
+                dynamic page elements.
+              </li>
+
+              <li>
+                Structured the project using reusable HTML and CSS components.
+              </li>
+            </ul>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="meta">
+              Python
+            </div>
+
+            <h3>
+              Python Animation Toolkit
+            </h3>
+
+            <ul>
+              <li>
+                Created Python scripts for generating procedural animations.
+              </li>
+
+              <li>
+                Experimented with timing, movement, and mathematical
+                transformations.
+              </li>
+
+              <li>
+                Organized animation logic into reusable functions and modules.
+              </li>
+            </ul>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="eyebrow">
+            04 · Experience
+          </div>
+
+          <h2>
+            Work Experience
+          </h2>
+
+        </div>
+
+
+        <div class="grid two">
+
+          <article class="card">
+
+            <div class="meta">
+              Olivet Boys &amp; Girls Club · Reading, PA
+            </div>
+
+            <h3>
+              Youth Development Professional
+            </h3>
+
+            <ul>
+              <li>
+                Supervised youth during daily activities while maintaining
+                a safe and organized environment.
+              </li>
+
+              <li>
+                Followed established activity curricula and adapted
+                activities when necessary.
+              </li>
+
+              <li>
+                Developed stronger communication, patience, and
+                leadership skills.
+              </li>
+
+              <li>
+                Collaborated with staff to maintain a positive environment.
+              </li>
+            </ul>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="meta">
+              Misael Grocery · Reading, PA
+            </div>
+
+            <h3>
+              Team Member
+            </h3>
+
+            <ul>
+              <li>
+                Organized refrigerated products and maintained orderly
+                storage areas.
+              </li>
+
+              <li>
+                Assisted with store organization and daily operational tasks.
+              </li>
+
+              <li>
+                Worked collaboratively with team members to complete
+                assigned responsibilities.
+              </li>
+            </ul>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+
+      <div class="container">
+
+        <div class="card contact-card">
+
+          <div class="eyebrow">
+            05 · Contact
+          </div>
+
+          <h2>
+            Let's connect.
+          </h2>
+
+          <p>
+            Interested in software development, systems programming,
+            or game development? Feel free to reach out.
+          </p>
+
+          <div class="buttons">
+
+            <a
+              href="mailto:jordan.carter@example.com"
+              class="button primary"
+            >
+              Email Me
+            </a>
+
+            <a
+              href="https://github.com/jordancarter"
+              class="button"
+              target="_blank"
+              rel="noopener"
+            >
+              GitHub
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="container">
+      © 2026 Jordan Carter · Computer Science Portfolio
+    </div>
+
+  </footer>
+
+</body>
+</html>
+```
